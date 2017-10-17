@@ -1,5 +1,9 @@
 package com.zls.model;
-
+/**
+ * 设备类型实体
+ * @author zhonglunsheng
+ *
+ */
 public class EquipmentType {
 
 	private Integer id;

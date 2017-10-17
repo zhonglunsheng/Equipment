@@ -1,5 +1,9 @@
 package com.zls.model;
-
+/**
+ * 部门信息实体
+ * @author zhonglunsheng
+ *
+ */
 public class Department {
 
 	private Integer id;

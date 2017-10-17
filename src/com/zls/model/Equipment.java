@@ -1,5 +1,9 @@
 package com.zls.model;
-
+/**
+ * 设备信息实体
+ * @author zhonglunsheng
+ *
+ */
 public class Equipment {
 
 	private Integer id;
@@ -7,7 +11,8 @@ public class Equipment {
 	private String no;
 	private Integer typeId;
 	private String typeName;
-	private Integer state; // 设备状态 1 正常状态 2 维修状态 3 报废状态
+	/**设备状态 1 正常状态 2 维修状态 3 报废状态*/
+	private Integer state; 
 	private String remark;
 	
 	public Integer getId() {

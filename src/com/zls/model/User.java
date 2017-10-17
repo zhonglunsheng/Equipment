@@ -1,12 +1,17 @@
 package com.zls.model;
-
+/**
+ * 用户信息实体
+ * @author zhonglunsheng
+ *
+ */
 public class User {
 
 	private Integer id;
 	private String userName;
 	private String password;
 	private String trueName;
-	private String roleName; // 角色  1 管理员 2 使用者 3 维修者
+	/**角色  1 管理员 2 使用者 3 维修者*/
+	private String roleName; 
 	private Integer deptId;
 	private String deptName;
 	

@@ -1,11 +1,18 @@
 package com.zls.model;
-
+/**
+ * 分页
+ * @author zhonglunsheng
+ *
+ */
 public class PageBean {
 
-	private int page; // 第几页
-	private int pageSize; // 每页记录数
+	/**第几页*/
+	private int page; 
+	/**每页记录数*/
+	private int pageSize;
 	@SuppressWarnings("unused")
-	private int start;  // 起始页
+	/**起始页*/
+	private int start;  
 	
 	
 	public PageBean(int page, int pageSize) {

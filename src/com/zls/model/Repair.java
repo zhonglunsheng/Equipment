@@ -1,19 +1,29 @@
 package com.zls.model;
 
 import java.util.Date;
-
+/**
+ * 维护状态实体
+ * @author zhonglunsheng
+ *
+ */
 public class Repair {
 
 	private Integer id;
 	private Integer equipmentId;
 	private String equipmentName;
 	private String equipmentNo;
-	private String userMan; // 报修人
-	private String repairMan; // 维修人
-	private Date repairTime; // 报修时间
-	private Date finishTime; // 处理完成时间
-	private Integer state; // 最终设备状态 1 维修成功 2 设备报废、
-	private Integer finishState; // 1 未处理 2 处理完毕
+	/**报修人*/
+	private String userMan;
+	/**维修人*/
+	private String repairMan; 
+	/**报修时间*/
+	private Date repairTime;
+	/**处理完成时间*/
+	private Date finishTime;
+	/**最终设备状态 1 维修成功 2 设备报废、*/
+	private Integer state;
+	/**1 未处理 2 处理完毕*/
+	private Integer finishState; 
 	
 	public Integer getId() {
 		return id;
