@@ -30,5 +30,27 @@ public class DepartmentServiceImpl implements DepartmentService{
 	public int saveDepartment(Department department) {
 		return departmentDAO.saveDepartment(department);
 	}
+
+	@Override
+	public Department getDepartmentById(int id) {
+		return departmentDAO.getDepartmentById(id);
+	}
+
+	@Override
+	public void updateDepartment(Department department) {
+		departmentDAO.updateDepartment(department);
+	}
+
+	@Override
+	public void removeDepartment(int id) {
+		// TODO 自动生成的方法存根
+		departmentDAO.removeDepartment(id);
+	}
+
+	@Override
+	public boolean isExistUser(int id) {
+		// TODO 自动生成的方法存根
+		return departmentDAO.isExistUser(id);
+	}
 	
 }

@@ -31,4 +31,32 @@ public interface DepartmentService {
 	 * @return
 	 */
 	int saveDepartment(Department department);
+	
+	/**
+	 * 获取单个部门信息
+	 * @param id
+	 * @return
+	 */
+	Department getDepartmentById(int id);
+	
+	/**
+	 * 修改部门信息
+	 * @param department
+	 * @return
+	 */
+	void updateDepartment(Department department);
+	
+	/**
+	 * 删除部门
+	 * @param id
+	 */
+	void removeDepartment(int id);
+	
+	/**
+	 * 判断部门内是否有用户存在
+	 * @param id
+	 * @return
+	 */
+	boolean isExistUser(int id);
+	
 }

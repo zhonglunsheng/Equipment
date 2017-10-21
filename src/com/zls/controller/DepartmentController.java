@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -15,7 +16,10 @@ import com.zls.model.Department;
 import com.zls.model.PageBean;
 import com.zls.service.DepartmentService;
 import com.zls.util.PageUtil;
+import com.zls.util.ResponseUtil;
 import com.zls.util.StringUtil;
+
+import net.sf.json.JSONObject;
 
 @Controller
 @RequestMapping("/department")
@@ -55,10 +59,16 @@ public class DepartmentController {
 	 * @return
 	 */
 	@RequestMapping("/preSave")
-	public ModelAndView preSave(){
+	public ModelAndView preSave(@RequestParam(value="id",required=false)String id){
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("modeName","部门管理");
-		mav.addObject("actionName","部门添加");
+		if (StringUtil.isNotEmpty(id)) {
+			Department department = departmentService.getDepartmentById(Integer.parseInt(id));
+			mav.addObject("department",department);
+			mav.addObject("actionName","部门修改");
+		}else{
+			mav.addObject("actionName","部门添加");
+		}
 		mav.addObject("mainPage", "department/preSave.jsp");
 		mav.setViewName("main");
 		return mav;
@@ -70,8 +80,36 @@ public class DepartmentController {
 	 * @return
 	 */
 	@RequestMapping("/save")
-	public String save(Department department){
-		departmentService.saveDepartment(department);
+	public String save(@RequestParam(value="id",required=false)String id,Department department){
+		if (StringUtil.isNotEmpty(id)) {
+			departmentService.updateDepartment(department);
+		}else{
+			departmentService.saveDepartment(department);
+		}
 		return "redirect:/department/list.do";
 	}
+	
+	/**
+	 * 删除部门
+	 * @param id
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/remove")
+	public String remove(@RequestParam(value="id")String id,HttpServletResponse response) throws Exception{
+		JSONObject result = new JSONObject();
+		boolean flag = departmentService.isExistUser(Integer.parseInt(id));
+		if (flag) {
+			result.put("success", false);
+			result.put("errorMsg", "该部门下有用户，不能删除");
+		}else{
+			departmentService.removeDepartment(Integer.parseInt(id));
+			result.put("success", true);
+		}
+		ResponseUtil.write(result,response);
+		return null;
+	}
+	
+	
 }

@@ -24,13 +24,14 @@
 		  <div class="form-group">
 		    <label class="col-sm-2 control-label">部门名称：</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="deptName" name="deptName" style="width:300px;">
+		      <input type="hidden" name="id" value="${department.id }">
+		      <input type="text" class="form-control" id="deptName" name="deptName" value="${department.deptName }" style="width:300px;">
 		    </div>
 		  </div>
 		  <div class="form-group">
 		    <label  class="col-sm-2 control-label">部门备注：</label>
 		    <div class="col-sm-10">
-		      <textarea rows="4" class="form-control" id="remark" name="remark" style="width:400px;"></textarea>
+		      <textarea rows="4" class="form-control" id="remark" name="remark" style="width:400px;">${department.remark }</textarea>
 		    </div>
 		  </div>
 		  <div class="form-group">

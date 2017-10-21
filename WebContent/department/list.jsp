@@ -1,5 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<script type="text/javascript">
+	function remove(id) {
+		if(confirm("你确定删除该部门信息?")){
+			$.post("${pageContext.request.contextPath}/department/remove.do",{id:id},
+					function (result) {
+						var result = eval('('+result+')');
+						if (result.success) {
+							alert("删除成功");
+							window.location.href="${pageContext.request.contextPath}/department/list.do";
+						}else{
+							alert(result.errorMsg);
+						}
+					});
+		}
+	}
+</script>
 <div class="row search" >
   <div class="col-md-6">
 	<form action="${pageContext.request.contextPath}/department/list.do" method="post">
@@ -20,12 +36,17 @@
      	<th>编号</th>
      	<th>部门名称</th>
      	<th>备注</th>
+     	<th>操作</th>
   </tr>
   <c:forEach varStatus="status" var="department" items="${departmentList }">
   		<tr>
   			<td>${status.index+1 }</td>
   			<td>${department.deptName }</td>
   			<td>${department.remark }</td>
+  			<td>
+  			<button class="btn btn-primary btn-xs" type="button" onclick="javascript:window.location.href='${pageContext.request.contextPath}/department/preSave.do?id=${department.id }'">修改</button>&nbsp;&nbsp;
+  			<button class="btn btn-danger btn-xs" type="button" onclick="remove(${department.id})">删除</button>
+  			</td>
   		</tr>
   </c:forEach>
 </table>

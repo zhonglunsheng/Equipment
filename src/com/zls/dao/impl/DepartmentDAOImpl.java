@@ -68,4 +68,42 @@ public class DepartmentDAOImpl implements DepartmentDAO{
 		return jdbcTemplate.update(sql, department.getDeptName(),department.getRemark());
 	}
 
+	@Override
+	public Department getDepartmentById(int id) {
+		String sql = "select * from t_department where id=?";
+		final Department department = new Department();
+		jdbcTemplate.query(sql, new Object[]{id}, new RowCallbackHandler() {
+			@Override
+			public void processRow(ResultSet rs) throws SQLException {
+				department.setId(rs.getInt("id")); 
+				department.setDeptName(rs.getString("deptName"));
+				department.setRemark(rs.getString("remark"));
+			}
+		});
+		return department;
+	}
+
+	@Override
+	public void updateDepartment(Department department) {
+		// TODO 自动生成的方法存根
+		String sql = "update t_department set deptName=?,remark=? where id=?";
+		jdbcTemplate.update(sql,new Object[]{department.getDeptName(),department.getRemark(),department.getId()});
+	}
+
+	@Override
+	public boolean isExistUser(int id) {
+		String sql = "select count(*) from t_user where id=?";
+		int result = jdbcTemplate.queryForObject(sql, new Object[]{id}, Integer.class);
+		if (result>0) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public void removeDepartment(int id) {
+		String sql = "delete from t_department where id=?";
+		jdbcTemplate.update(sql,id);
+	}
+
 }
