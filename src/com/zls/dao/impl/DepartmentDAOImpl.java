@@ -62,4 +62,10 @@ public class DepartmentDAOImpl implements DepartmentDAO{
 		return jdbcTemplate.queryForObject(sb.toString(),Integer.class);
 	}
 
+	@Override
+	public int saveDepartment(Department department) {
+		String sql = "insert into t_department values(null,?,?)";
+		return jdbcTemplate.update(sql, department.getDeptName(),department.getRemark());
+	}
+
 }

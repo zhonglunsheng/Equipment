@@ -11,7 +11,8 @@
 	    </div>
     </form>
   </div>
-  <div class="col-md-6" >
+  <div class="col-md-6 text-right" >
+  	<button class="btn btn-primary" onclick="javascript:window.location.href='${pageContext.request.contextPath}/department/preSave.do'">添加</button>
   </div>
 </div>
 <table class="table table-striped table-bordered">

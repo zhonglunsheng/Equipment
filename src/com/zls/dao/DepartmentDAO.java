@@ -24,4 +24,11 @@ public interface DepartmentDAO {
 	 * @return
 	 */
 	int countDepartment(Department s_department);
+	
+	/**
+	 * Ìí¼Ó²¿ÃÅ
+	 * @param department
+	 * @return
+	 */
+	int saveDepartment(Department department);
 }

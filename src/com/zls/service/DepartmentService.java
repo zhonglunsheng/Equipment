@@ -25,4 +25,10 @@ public interface DepartmentService {
 	
 	int countDepartment(Department s_department);
 	
+	/**
+	 * Ìí¼Ó²¿ÃÅ
+	 * @param department
+	 * @return
+	 */
+	int saveDepartment(Department department);
 }

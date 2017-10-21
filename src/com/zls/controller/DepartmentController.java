@@ -50,4 +50,28 @@ public class DepartmentController {
 		mav.setViewName("main");
 		return mav;
 	}
+	/**
+	 * 跳至部门添加页面
+	 * @return
+	 */
+	@RequestMapping("/preSave")
+	public ModelAndView preSave(){
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("modeName","部门管理");
+		mav.addObject("actionName","部门添加");
+		mav.addObject("mainPage", "department/preSave.jsp");
+		mav.setViewName("main");
+		return mav;
+	}
+	
+	/**
+	 * 添加部门
+	 * @param department
+	 * @return
+	 */
+	@RequestMapping("/save")
+	public String save(Department department){
+		departmentService.saveDepartment(department);
+		return "redirect:/department/list.do";
+	}
 }

@@ -25,5 +25,10 @@ public class DepartmentServiceImpl implements DepartmentService{
 	public int countDepartment(Department s_department) {
 		return departmentDAO.countDepartment(s_department);
 	}
+
+	@Override
+	public int saveDepartment(Department department) {
+		return departmentDAO.saveDepartment(department);
+	}
 	
 }
